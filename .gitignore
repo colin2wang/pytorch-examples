@@ -1,0 +1,9 @@
+# Python
+/venv/*
+
+# Idea
+.idea/*
+**/*.iml
+
+# Dataset File
+/dataset/*

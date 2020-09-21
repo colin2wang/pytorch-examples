@@ -30,7 +30,7 @@ def test(model, device, test_loader):
 
 def main():
     model = Net()
-    model.load_state_dict(torch.load("outputs/mnist_cnn.pt"))
+    model.load_state_dict(torch.load("output/mnist_cnn.pt"))
 
     transform = transforms.Compose([
         transforms.ToTensor(),

@@ -111,8 +111,8 @@ def main():
         transforms.ToTensor(),
         transforms.Normalize((0.1307,), (0.3081,))
         ])
-    train_dataset = datasets.MNIST('dataset', train=True, download=True, transform=transform)
-    test_dataset = datasets.MNIST('dataset', train=False, transform=transform)
+    train_dataset = datasets.MNIST('dataset/mnist', train=True, download=True, transform=transform)
+    test_dataset = datasets.MNIST('dataset/mnist', train=False, transform=transform)
 
     # train_loader = torch.utils.data.DataLoader(train_dataset,**kwargs)
     # test_loader = torch.utils.data.DataLoader(test_dataset, **kwargs)

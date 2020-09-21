@@ -7,8 +7,8 @@ from knn_classify import kNN_classify
 
 batch_size = 100
 
-mnist_train_dataset = dsets.MNIST(root="dataset", train=True, download=True)
-mnist_test_dataset = dsets.MNIST(root="dataset", train=False, download=True)
+mnist_train_dataset = dsets.MNIST(root="dataset/mnist", train=True, download=True)
+mnist_test_dataset = dsets.MNIST(root="dataset/mnist", train=False, download=True)
 
 train_loader = DataLoader(dataset=mnist_train_dataset, batch_size=batch_size, shuffle=True)
 test_loader = DataLoader(dataset=mnist_test_dataset, batch_size=batch_size, shuffle=True)

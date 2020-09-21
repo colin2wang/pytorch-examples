@@ -7,3 +7,6 @@
 
 # Dataset File
 /dataset/*
+
+# Output File
+/outputs/*

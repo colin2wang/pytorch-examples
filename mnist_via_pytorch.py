@@ -105,18 +105,20 @@ def main():
         kwargs.update({'num_workers': 1,
                        'pin_memory': True,
                        'shuffle': True},
-                     )
+                      )
 
-    transform=transforms.Compose([
+    transform = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize((0.1307,), (0.3081,))
         ])
-    dataset1 = datasets.MNIST('dataset', train=True, download=True,
-                       transform=transform)
-    dataset2 = datasets.MNIST('dataset', train=False,
-                       transform=transform)
-    train_loader = torch.utils.data.DataLoader(dataset1,**kwargs)
-    test_loader = torch.utils.data.DataLoader(dataset2, **kwargs)
+    train_dataset = datasets.MNIST('dataset', train=True, download=True, transform=transform)
+    test_dataset = datasets.MNIST('dataset', train=False, transform=transform)
+
+    # train_loader = torch.utils.data.DataLoader(train_dataset,**kwargs)
+    # test_loader = torch.utils.data.DataLoader(test_dataset, **kwargs)
+
+    train_loader = torch.utils.data.DataLoader(dataset=train_dataset, batch_size=100, shuffle=True)
+    test_loader = torch.utils.data.DataLoader(dataset=test_dataset, batch_size=100, shuffle=True)
 
     model = Net().to(device)
     optimizer = optim.Adadelta(model.parameters(), lr=args.lr)
@@ -128,7 +130,7 @@ def main():
         scheduler.step()
 
     if args.save_model:
-        torch.save(model.state_dict(), "mnist_cnn.pt")
+        torch.save(model.state_dict(), "outputs/mnist_cnn.pt")
 
 
 if __name__ == '__main__':
